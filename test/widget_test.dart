@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kelpico/kelpico_scaffold.dart';
+import 'package:kelpico/kelpico_app.dart';
 
 void main() {
-  testWidgets('KelpicoApp launches successfully smoke test', (WidgetTester tester) async {
+  testWidgets('KelpicoApp drawer smoke test', (WidgetTester tester) async {
     await tester.pumpWidget(const KelpicoApp());
-    expect(find.byType(KelpicoApp), findsOneWidget);
+    expect(find.text('Pantry Shelves'), findsOneWidget);
   });
 }
