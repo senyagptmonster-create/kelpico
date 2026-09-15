@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kelpico/product/product_app.dart';
+import 'package:kelpico/kelpico_scaffold.dart';
 
 void main() {
-  testWidgets('Smoke test', (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(home: ProductApp()));
-    expect(find.byType(ProductApp), findsOneWidget);
+  testWidgets('KelpicoApp launches successfully smoke test', (WidgetTester tester) async {
+    await tester.pumpWidget(const KelpicoApp());
+    expect(find.byType(KelpicoApp), findsOneWidget);
   });
 }
