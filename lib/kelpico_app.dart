@@ -143,62 +143,64 @@ class _KelpicoAppState extends State<KelpicoApp> {
             ],
           ),
           drawer: Drawer(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: KelpicoTheme.accent,
+            child: Builder(
+              builder: (drawerContext) => ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  DrawerHeader(
+                    decoration: const BoxDecoration(
+                      color: KelpicoTheme.accent,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 24,
+                          child: Icon(Icons.kitchen, color: KelpicoTheme.accent, size: 28),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Kelpico Auditor',
+                          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${_items.length} active provisions',
+                          style: const TextStyle(color: Colors.white70, fontSize: 13),
+                        ),
+                      ],
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 24,
-                        child: Icon(Icons.kitchen, color: KelpicoTheme.accent, size: 28),
-                      ),
-                      const SizedBox(height: 10),
-                      const Text(
-                        'Kelpico Auditor',
-                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '${_items.length} active provisions',
-                        style: const TextStyle(color: Colors.white70, fontSize: 13),
-                      ),
-                    ],
+                  ListTile(
+                    leading: const Icon(Icons.shelves),
+                    title: const Text('Pantry Shelves'),
+                    selected: _selectedNav == 0,
+                    onTap: () {
+                      setState(() => _selectedNav = 0);
+                      Navigator.pop(drawerContext);
+                    },
                   ),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.shelves),
-                  title: const Text('Pantry Shelves'),
-                  selected: _selectedNav == 0,
-                  onTap: () {
-                    setState(() => _selectedNav = 0);
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.notification_important_outlined),
-                  title: const Text('Expiry Alerts'),
-                  selected: _selectedNav == 1,
-                  onTap: () {
-                    setState(() => _selectedNav = 1);
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.dashboard_customize_outlined),
-                  title: const Text('Storage Zones'),
-                  selected: _selectedNav == 2,
-                  onTap: () {
-                    setState(() => _selectedNav = 2);
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
+                  ListTile(
+                    leading: const Icon(Icons.notification_important_outlined),
+                    title: const Text('Expiry Alerts'),
+                    selected: _selectedNav == 1,
+                    onTap: () {
+                      setState(() => _selectedNav = 1);
+                      Navigator.pop(drawerContext);
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.dashboard_customize_outlined),
+                    title: const Text('Storage Zones'),
+                    selected: _selectedNav == 2,
+                    onTap: () {
+                      setState(() => _selectedNav = 2);
+                      Navigator.pop(drawerContext);
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           body: content,
